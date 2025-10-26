@@ -3,15 +3,15 @@ ruta = "archivo_paices.csv"
 
 #se le pasa por parametro el continente que se desea buscar y la función filtra entre toda la lista del csv para obtener los paices cuyos continentes son iguales al buscado
 def filtrar_por_continente(continente):
-    paices = []
+    paises = []
 
     with open(ruta, newline="", encoding="utf-8") as archivo:
         lector = csv.DictReader(archivo)
         for fila in lector:
             if fila["continente"].strip().lower() == continente:
-                paices.append(fila["nombre"], fila["poblacion"], fila["superficie"], fila["continente"])
+                paises.append(fila["nombre"], fila["poblacion"], fila["superficie"], fila["continente"])
 
-    return paices
+    return paises
 
 #se pasa por parametro la población minima y maxima de lo que se deséa filtrar, luego la función busca todos los paices que se encuentren entre esos dos valores y devuelve una tupla de estos
 def filtrar_por_rango_de_población(poblacion_min, poblacion_max):
