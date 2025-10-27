@@ -5,11 +5,11 @@ ruta = "archivo_paices.csv"
 def filtrar_por_continente(continente):
     paises = []
 
-    with open(ruta, newline="", encoding="utf-8") as archivo:
+    with open(ruta, "r", newline="", encoding="utf-8") as archivo:
         lector = csv.DictReader(archivo)
         for fila in lector:
             if fila["continente"].strip().lower() == continente:
-                paises.append(fila["nombre"], fila["poblacion"], fila["superficie"], fila["continente"])
+                paises.append((fila["nombre"], fila["poblacion"], fila["superficie"], fila["continente"]))
 
     return paises
 
@@ -17,7 +17,7 @@ def filtrar_por_continente(continente):
 def filtrar_por_rango_de_población(poblacion_min, poblacion_max):
     paises = []
 
-    with open(ruta, newline="", encoding="utf-8") as archivo:
+    with open(ruta, "r", newline="", encoding="utf-8") as archivo:
         lector = csv.DictReader(archivo)
         for fila in lector:
                 poblacion = float(fila["poblacion"])
@@ -30,7 +30,7 @@ def filtrar_por_rango_de_población(poblacion_min, poblacion_max):
 def filtrar_por_rango_de_superficie(superficie_min, superficie_max):
     paises = []
 
-    with open(ruta, newline="", encoding="utf-8") as archivo:
+    with open(ruta, "r", newline="", encoding="utf-8") as archivo:
         lector = csv.DictReader(archivo)
         for fila in lector:
                 superficie = float(fila["superficie"])
@@ -40,7 +40,7 @@ def filtrar_por_rango_de_superficie(superficie_min, superficie_max):
     return paises
 
 def main():
-    filtrar_por_continente()
+    filtrar_por_continente("europa")
     filtrar_por_rango_de_población()
     filtrar_por_rango_de_superficie()
 
