@@ -1,68 +1,60 @@
-import csv
+from obtener_lista_paises import obtener_paises
 
-RUTA = "archivo_paices.csv"
-
-#Función general que lee el archivo csv y devuelve una lista con todos los elementos del csv
-def obtener_paises():
-    try:
-        lista_paises = []
-
-        with open(RUTA, "r", newline="", encoding="UTF-8") as archivo:
-            lector = csv.reader(archivo)
-            next(lector)
-            for linea in lector:
-                lista_paises.append(linea)
-        
-        return lista_paises
+#Función que recibe una lista de paises o un diccionario, e imprime la información de cada país
+#con formato, o del diccionario
+def mostrar_paises(paises):
+    if isinstance(paises, list):
+        for pais in paises:
+                print(f"País: '{pais["nombre"]}', Población: '{pais["poblacion"]}', Superficie: '{pais["superficie"]}', Continente: '{pais["continente"]}'")
+    else:
+        print(f"País: '{paises["nombre"]}', Población: '{paises["poblacion"]}', Superficie: '{paises["superficie"]}', Continente: '{paises["continente"]}'")
     
-    except:
-        print("Error")
-
-#Función general que carga una lista de paises en el csv
-def cargar_paises(lista_paises:list):
-    with open(RUTA, "w", newline="", encoding="UTF-8") as archivo:
-            escritor = csv.writer(archivo)
-            escritor.writerow(["nombre","poblacion","superficie","continente"])
-            escritor.writerows(lista_paises)
-
-#Función que sobreescribe el csv por nombre, de manera ascendente (A, B, C, D, etc.)
+#Función que utiliza una lista de paises y los ordena por nombre de manera ascendente (A, B, C, D, etc.),
+#devuelve la lista ordenada
 def ordenar_por_nombre():
     try:
         lista_paises = obtener_paises()
         
-        lista_paises.sort(key=lambda pais: pais[0])
-        #El método sort ordena la lista en base al primer elemento de cada sub-lista
+        lista_paises.sort(key=lambda pais: pais["nombre"])
+        #El método sort ordena la lista en base al nombre del país
         
-        cargar_paises(lista_paises)
+        return lista_paises
+        
     except:
         print("Error")
 
-#Función que sobreescribe el csv ordenando los países por población de manera ascendente
-def ordenar_por_poblacion():
+#Función que utiliza una lista de paises y los ordena por población de manera ascendente o descendiente,
+#devuelve la lista ordenada
+def ordenar_por_poblacion(descendente:bool):
     try:
         lista_paises = obtener_paises()
 
-        lista_paises.sort(key=lambda pais: int(pais[1]))
-        #El método sort ordena la lista en base al segundo elemento de cada sub-lista
+        lista_paises.sort(reverse=descendente, key=lambda pais: int(pais["poblacion"]))
+        #El método sort ordena la lista en base a la población de cada sub-lista en
+        #manera descendente o ascendente, dependiendo del valor de la variable descendiente
 
-        cargar_paises(lista_paises)
+        return lista_paises
+        
     except:
         print("Error")
 
-#Función que sobreescribe el csv ordenando los países por superficie de manera ascendente
+#Función que utiliza una lista de paises y los ordena por superficie de manera ascendente o descendiente,
+#devuelve la lista ordenada
 def ordenar_por_superficie(descendente:bool):
     try:
         lista_paises = obtener_paises()
 
-        lista_paises.sort(reverse=descendente, key=lambda pais: float(pais[2]))
-        #El método sort ordena la lista en base al tercer elemento de cada sub-lista
+        lista_paises.sort(reverse=descendente, key=lambda pais: float(pais["superficie"]))
+        #El método sort ordena la lista en base a la suérficie de cada sub-lista en
+        #manera descendente o ascendente, dependiendo del valor de la variable descendiente
 
-        cargar_paises(lista_paises)
+        return lista_paises
+        
     except:
         print("Error")
 
 def main():
-    pass
+    print(ordenar_por_poblacion(False))
 
 if __name__ == "__main__":
     main()
