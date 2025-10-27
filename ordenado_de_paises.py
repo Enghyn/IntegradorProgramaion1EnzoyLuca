@@ -21,6 +21,9 @@ def obtener_paises():
         print("Error")
 
 def cargar_paises(lista_paises:list):
+    """
+    Función general que carga una lista de paises en el csv
+    """
     with open(RUTA, "w", newline="", encoding="UTF-8") as archivo:
             escritor = csv.writer(archivo)
             escritor.writerow(["nombre","poblacion","superficie","continente"])
