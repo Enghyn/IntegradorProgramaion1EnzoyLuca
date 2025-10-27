@@ -20,6 +20,12 @@ def obtener_paises():
     except:
         print("Error")
 
+def cargar_paises(lista_paises:list):
+    with open(RUTA, "w", newline="", encoding="UTF-8") as archivo:
+            escritor = csv.writer(archivo)
+            escritor.writerow(["nombre","poblacion","superficie","continente"])
+            escritor.writerows(lista_paises)
+
 def ordenar_por_nombre():
     """
     Función que sobreescribe el csv por nombre, de manera ascendente (A, B, C, D, etc.)
@@ -30,10 +36,7 @@ def ordenar_por_nombre():
         lista_paises.sort(key=lambda pais: pais[0])
         #El método sort ordena la lista en base al primer elemento de cada sub-lista
         
-        with open(RUTA, "w", newline="", encoding="UTF-8") as archivo:
-            escritor = csv.writer(archivo)
-            escritor.writerow(["nombre","poblacion","superficie","continente"])
-            escritor.writerows(lista_paises)
+        cargar_paises(lista_paises)
     except:
         print("Error")
 
@@ -47,10 +50,7 @@ def ordenar_por_poblacion():
         lista_paises.sort(key=lambda pais: int(pais[1]))
         #El método sort ordena la lista en base al segundo elemento de cada sub-lista
 
-        with open(RUTA, "w", newline="", encoding="UTF-8") as archivo:
-            escritor = csv.writer(archivo)
-            escritor.writerow(["nombre","poblacion","superficie","continente"])
-            escritor.writerows(lista_paises)
+        cargar_paises(lista_paises)
     except:
         print("Error")
 
@@ -64,10 +64,7 @@ def ordenar_por_superficie(descendente:bool):
         lista_paises.sort(reverse=descendente, key=lambda pais: float(pais[2]))
         #El método sort ordena la lista en base al tercer elemento de cada sub-lista
 
-        with open(RUTA, "w", newline="", encoding="UTF-8") as archivo:
-            escritor = csv.writer(archivo)
-            escritor.writerow(["nombre","poblacion","superficie","continente"])
-            escritor.writerows(lista_paises)
+        cargar_paises(lista_paises)
     except:
         print("Error")
 
