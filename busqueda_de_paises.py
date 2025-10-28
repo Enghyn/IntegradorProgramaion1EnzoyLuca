@@ -1,17 +1,11 @@
 import csv
-import unicodedata
 from config import RUTA
-
-#esta función, usando la librería unidodedata, remplaza las tildes de la palabra puesta como parametro.
-def sin_tilde(texto:str):
-    texto = texto.lower()
-    texto_normalizado = unicodedata.normalize('NFD', texto)
-    texto_sin_tildes = ''.join(c for c in texto_normalizado if unicodedata.category(c) != 'Mn')
-    return texto_sin_tildes
+from eliminar_tildes import sin_tilde
 
 #esta función recibe como parametro el nombre parcial o completo de un país ingresado por el usuario para ser buscado. Devuelve una lista conformada por el nombre, el continente, la población y la superficie del país buscado. 
 #en caso de no encontrar coincidencias, devuelve una lista vacía
 def buscar_pais(nombre_busqueda:str):
+    nombre_busqueda = sin_tilde(nombre_busqueda)
     resultados = []
 
     with open(RUTA, "r", newline='', encoding='utf-8') as archivo:

@@ -16,7 +16,7 @@ def main():
         opcion = input(">> ")
         match opcion:
             case "1":
-                texto = input("Ingresa el país a buscar\n"">> ")
+                texto = input("Ingresa el país a buscar\n"">> ").lower().strip()
                 resultado = busqueda_de_paises.buscar_pais(texto)
                 if resultado:
                     for fila in resultado:
