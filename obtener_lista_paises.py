@@ -1,6 +1,6 @@
 import csv
 
-RUTA = "archivo_paices.csv"
+from config import RUTA
 
 #Función general que lee el archivo csv y devuelve una lista con todos los elementos del csv
 def obtener_paises():

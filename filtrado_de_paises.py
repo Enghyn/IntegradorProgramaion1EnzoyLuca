@@ -1,11 +1,11 @@
 import csv
-ruta = "archivo_paices.csv"
+from config import RUTA
 
 #se le pasa por parametro el continente que se desea buscar y la función filtra entre toda la lista del csv para obtener los paices cuyos continentes son iguales al buscado
-def filtrar_por_continente(continente):
+def filtrar_por_continente(continente:str):
     paises = []
 
-    with open(ruta, "r", newline="", encoding="utf-8") as archivo:
+    with open(RUTA, "r", newline="", encoding="utf-8") as archivo:
         lector = csv.DictReader(archivo)
         for fila in lector:
             if fila["continente"].strip().lower() == continente:
@@ -14,10 +14,10 @@ def filtrar_por_continente(continente):
     return paises
 
 #se pasa por parametro la población minima y maxima de lo que se deséa filtrar, luego la función busca todos los paices que se encuentren entre esos dos valores y devuelve una tupla de estos
-def filtrar_por_rango_de_población(poblacion_min, poblacion_max):
+def filtrar_por_rango_de_población(poblacion_min:int, poblacion_max:int):
     paises = []
 
-    with open(ruta, "r", newline="", encoding="utf-8") as archivo:
+    with open(RUTA, "r", newline="", encoding="utf-8") as archivo:
         lector = csv.DictReader(archivo)
         for fila in lector:
                 poblacion = float(fila["poblacion"])
@@ -27,10 +27,10 @@ def filtrar_por_rango_de_población(poblacion_min, poblacion_max):
     return paises
 
 #se pasa por parametro la superficie minima y maxima de lo que se deséa filtrar, luego la función busca todos los paices que se encuentren entre esos dos valores y devuelve una tupla de estos
-def filtrar_por_rango_de_superficie(superficie_min, superficie_max):
+def filtrar_por_rango_de_superficie(superficie_min:float, superficie_max:float):
     paises = []
 
-    with open(ruta, "r", newline="", encoding="utf-8") as archivo:
+    with open(RUTA, "r", newline="", encoding="utf-8") as archivo:
         lector = csv.DictReader(archivo)
         for fila in lector:
                 superficie = float(fila["superficie"])

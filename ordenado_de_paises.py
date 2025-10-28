@@ -8,7 +8,7 @@ def mostrar_paises(paises):
                 print(f"País: '{pais["nombre"]}', Población: '{pais["poblacion"]}', Superficie: '{pais["superficie"]}', Continente: '{pais["continente"]}'")
     else:
         print(f"País: '{paises["nombre"]}', Población: '{paises["poblacion"]}', Superficie: '{paises["superficie"]}', Continente: '{paises["continente"]}'")
-    
+
 #Función que utiliza una lista de paises y los ordena por nombre de manera ascendente (A, B, C, D, etc.),
 #devuelve la lista ordenada
 def ordenar_por_nombre():
@@ -47,7 +47,7 @@ def ordenar_por_superficie(descendente:bool):
         lista_paises.sort(reverse=descendente, key=lambda pais: float(pais["superficie"]))
         #El método sort ordena la lista en base a la suérficie de cada sub-lista en
         #manera descendente o ascendente, dependiendo del valor de la variable descendiente
-
+        
         return lista_paises
         
     except:
