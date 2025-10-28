@@ -1,16 +1,18 @@
 import busqueda_de_paises
 import filtrado_de_paises
 import ordenado_de_paises
+import mostrar_estadisticas
 
 def main():
     while True:
-        print("""Bienvenido a nustra base de datos de paises.
+        print("""Bienvenido a nustra base de datos de países.
         =========MENÜ=========
         [1] Buscar país
-        [2] Filtrar paises
-        [3] Ordenar paises
-        [4] Agregar o eliminar paises
-        [5] Salir""")
+        [2] Filtrar países
+        [3] Ordenar países
+        [4] Agregar o eliminar países
+        [5] Mostrar estadísticas
+        [6] Salir""")
         opcion = input(">> ")
         match opcion:
             case "1":
@@ -20,7 +22,7 @@ def main():
                     for fila in resultado:
                         print(f"- {fila['nombre']} ({fila['continente']}, {fila['poblacion']} habitantes, {fila["superficie"]} KM²)")
                 else:
-                    print("No se encuentran paises.")
+                    print("No se encuentran países.")
             case "2":
                 opcion = input("Filtrar por:\n[1] Continente\n[2] Por rango de población\n[3] Por rango de superficie\n"">> ")
                 match opcion:
@@ -106,8 +108,31 @@ def main():
             case "4":
                 pass
             case "5":
+                while True:
+                    opcion = input("Ingrese la opción a realizar:\n[1] País con mayor y menor población\n[2] Promedio de población\n[3] Promedio de superficie\n[4] Cantidad de países por continente\n[5] Salir\n"">> ")
+                    match opcion:
+                        case "1":
+                            mostrar_estadisticas.poblacion_mayor_y_menor()
+                        case "2":
+                            promedio_poblacion = mostrar_estadisticas.promedio_poblacion()
+                            print(f"Promedio de población: {promedio_poblacion}")
+                        case "3":
+                            promedio_superficie = mostrar_estadisticas.promedio_superficie()
+                            print(f"Promedio de superficie: {promedio_superficie}")
+                        case "4":
+                            mostrar_estadisticas.paises_por_continente()
+                        case "5":
+                            print("Volviendo al menú de inicio")
+                            break
+                        case __:
+                            print("Opción ingresada invalida")
+                            continue
+            case "6":
                 print("Hasta la proxima!!!")
                 break
+            case __:
+                print("Opción ingresada invalida")
+                continue
 
 if __name__ == "__main__":
     main()
