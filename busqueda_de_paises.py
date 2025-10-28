@@ -1,6 +1,6 @@
 import csv
 import unicodedata
-ruta = "archivo_paices.csv"
+from config import RUTA
 
 #esta función, usando la librería unidodedata, remplaza las tildes de la palabra puesta como parametro.
 def sin_tilde(texto:str):
@@ -14,7 +14,7 @@ def sin_tilde(texto:str):
 def buscar_pais(nombre_busqueda:str):
     resultados = []
 
-    with open(ruta, newline='', encoding='utf-8') as archivo:
+    with open(RUTA, "r", newline='', encoding='utf-8') as archivo:
         lector = csv.DictReader(archivo)
         for fila in lector:
             nombre_pais = fila["nombre"].lower().strip()
