@@ -40,9 +40,7 @@ def filtrar_por_rango_de_superficie(superficie_min:float, superficie_max:float):
     return paises
 
 def main():
-    filtrar_por_continente("europa")
-    filtrar_por_rango_de_población()
-    filtrar_por_rango_de_superficie()
+    pass
 
 if __name__ == "__main__":
     main()
