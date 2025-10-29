@@ -2,8 +2,11 @@ import busqueda_de_paises
 import filtrado_de_paises
 import ordenado_de_paises
 import mostrar_estadisticas
+import validacion_csv
+import modificado_csv
 
 def main():
+    validacion_csv.validar_csv()
     while True:
         print("""Bienvenido a nustra base de datos de países.
         =========MENÜ=========
@@ -106,7 +109,52 @@ def main():
                         case __:
                             print("Opción ingresada invalida")
             case "4":
-                pass
+                opcion = input("Ingrese la opción a realizar:\n[1] Agregar nuevo elemento\n[2] Modificar elemento\n[3] Eliminar elementos\n[4] Salir\n>> ")
+                match opcion:
+                    case "1":
+                        while True:
+                            nombre = input("Ingrese el nombre del país a agregar\n"">> ").lower().strip()
+                            if input(f"Nombre ingresado: {nombre}. ¿Es correcto? [1]Si [2]No\n"">> ").lower().strip() == "2":
+                                continue
+                            poblacion = input("Ingrese la población del país\n"">> ").lower().strip()
+                            if input(f"Población ingresada: {poblacion}. ¿Es correcto? [1]Si [2]No\n"">> ").lower().strip() == "2":
+                                continue
+                            continente = input("Ingrese el continente del país\n"">> ").lower().strip()
+                            if input(f"Continente ingresado: {continente}. ¿Es correcto? [1]Si [2]No\n"">> ").lower().strip() == "2":
+                                continue
+                            superficie = input("Ingrese la superficie del país\n"">> ").lower().strip()
+                            if input(f"Superficie ingresada: {superficie}. ¿Es correcto? [1]Si [2]No\n"">> ").lower().strip() == "2":
+                                continue
+                            break
+                        modificado_csv.agregar_elemento(nombre, poblacion, superficie, continente)
+                    case "2":
+                        while True:
+                            nombre = input("Ingrese el nombre del país a modificar\n"">> ").lower().strip()
+                            if input(f"Nombre ingresado: {nombre}. ¿Es correcto? [1]Si [2]No\n"">> ").lower().strip() == "2":
+                                continue
+                            poblacion = input("Ingrese la población del país\n"">> ").lower().strip()
+                            if input(f"Población ingresada: {poblacion}. ¿Es correcto? [1]Si [2]No\n"">> ").lower().strip() == "2":
+                                continue
+                            continente = input("Ingrese el continente del país\n"">> ").lower().strip()
+                            if input(f"Continente ingresado: {continente}. ¿Es correcto? [1]Si [2]No\n"">> ").lower().strip() == "2":
+                                continue
+                            superficie = input("Ingrese la superficie del país\n"">> ").lower().strip()
+                            if input(f"Superficie ingresada: {superficie}. ¿Es correcto? [1]Si [2]No\n"">> ").lower().strip() == "2":
+                                continue
+                            break
+                        modificado_csv.modificar_elemento(nombre, poblacion, superficie, continente)
+                    case "3":
+                        while True:
+                            nombre = input("Ingrese el nombre del país a eliminar\n"">> ").lower().strip()
+                            if input(f"Nombre ingresado: {nombre}. ¿Es correcto? [1]Si [2]No\n"">> ").lower().strip() == "2":
+                                continue
+                            break
+                        modificado_csv.eliminar_elemento(nombre)
+
+                    case "4":
+                        print("Saliendo al menú principal...")
+                        break
+
             case "5":
                 while True:
                     opcion = input("Ingrese la opción a realizar:\n[1] País con mayor y menor población\n[2] Promedio de población\n[3] Promedio de superficie\n[4] Cantidad de países por continente\n[5] Salir\n"">> ")
