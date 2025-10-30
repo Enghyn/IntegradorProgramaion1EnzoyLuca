@@ -1,12 +1,12 @@
-import busqueda_de_paises
-import filtrado_de_paises
-import ordenado_de_paises
-import mostrar_estadisticas
-import validacion_csv
-import modificado_csv
+import Funciones.busqueda_de_paises
+import Funciones.filtrado_de_paises
+import Funciones.ordenado_de_paises
+import Funciones.mostrar_estadisticas
+import Funciones.validacion_csv
+import Funciones.modificado_csv
 
 def main():
-    validacion_csv.validar_csv()
+    Funciones.validacion_csv.validar_csv()
     while True:
         print("""Bienvenido a nustra base de datos de países.
         =========MENÜ=========
@@ -20,7 +20,7 @@ def main():
         match opcion:
             case "1":
                 texto = input("Ingresa el país a buscar\n"">> ").lower().strip()
-                resultado = busqueda_de_paises.buscar_pais(texto)
+                resultado = Funciones.busqueda_de_paises.buscar_pais(texto)
                 if resultado:
                     for fila in resultado:
                         print(f"- {fila['nombre']} ({fila['continente']}, {fila['poblacion']} habitantes, {fila["superficie"]} KM²)")
@@ -31,7 +31,7 @@ def main():
                 match opcion:
                     case "1":
                         continente = input("Ingrese el continente a buscar\n"">> ")
-                        resultado = filtrado_de_paises.filtrar_por_continente(continente)
+                        resultado = Funciones.filtrado_de_paises.filtrar_por_continente(continente)
                         if resultado:
                             for fila in resultado:
                                 print(f"- {fila['nombre']} ({fila['continente']}, {fila['poblacion']} habitantes, {fila["superficie"]} KM²)")
@@ -45,7 +45,7 @@ def main():
                             print("Solo puedes ingresar numeros")
                             continue
 
-                        resultado = filtrado_de_paises.filtrar_por_rango_de_población(poblacion_min, poblacion_max)
+                        resultado = Funciones.filtrado_de_paises.filtrar_por_rango_de_población(poblacion_min, poblacion_max)
                         if resultado:
                             for fila in resultado:
                                 print(fila)
@@ -59,7 +59,7 @@ def main():
                             print("Solo puedes ingresar numeros")
                             continue
 
-                        resultado = filtrado_de_paises.filtrar_por_rango_de_superficie(superficie_min, superficie_max)
+                        resultado = Funciones.filtrado_de_paises.filtrar_por_rango_de_superficie(superficie_min, superficie_max)
                         if resultado:
                             for fila in resultado:
                                 print(fila)
@@ -73,7 +73,7 @@ def main():
                     opcion = input(">> ")
                     match opcion:
                         case "1":
-                            lista_paises = ordenado_de_paises.ordenar_por_nombre()
+                            lista_paises = Funciones.ordenado_de_paises.ordenar_por_nombre()
                             print("Lista de países ordenada:")
                             for linea in lista_paises:
                                 print(f"{linea["nombre"]} -- población: {linea["poblacion"]} -- superficie: {linea["superficie"]}KM² -- {linea["continente"]}")
@@ -86,7 +86,7 @@ def main():
                             else:
                                 print("Opción ingresada invalida")
                                 continue
-                            lista_paises = ordenado_de_paises.ordenar_por_superficie(orden)
+                            lista_paises = Funciones.ordenado_de_paises.ordenar_por_superficie(orden)
                             print("Lista de países ordenada:")
                             for linea in lista_paises:
                                 print(f"{linea["nombre"]} -- población: {linea["poblacion"]} -- superficie: {linea["superficie"]}KM² -- {linea["continente"]}")
@@ -99,7 +99,7 @@ def main():
                             else:
                                 print("Opción ingresada invalida")
                                 continue
-                            lista_paises = ordenado_de_paises.ordenar_por_poblacion(orden)
+                            lista_paises = Funciones.ordenado_de_paises.ordenar_por_poblacion(orden)
                             print("Lista de países ordenada:")
                             for linea in lista_paises:
                                 print(f"{linea["nombre"]} -- población: {linea["poblacion"]} -- superficie: {linea["superficie"]}KM² -- {linea["continente"]}")
@@ -126,7 +126,7 @@ def main():
                             if input(f"Superficie ingresada: {superficie}. ¿Es correcto? [1]Si [2]No\n"">> ").lower().strip() == "2":
                                 continue
                             break
-                        modificado_csv.agregar_elemento(nombre, poblacion, superficie, continente)
+                        Funciones.modificado_csv.agregar_elemento(nombre, poblacion, superficie, continente)
                     case "2":
                         while True:
                             nombre = input("Ingrese el nombre del país a modificar\n"">> ").lower().strip()
@@ -142,14 +142,14 @@ def main():
                             if input(f"Superficie ingresada: {superficie}. ¿Es correcto? [1]Si [2]No\n"">> ").lower().strip() == "2":
                                 continue
                             break
-                        modificado_csv.modificar_elemento(nombre, poblacion, superficie, continente)
+                        Funciones.modificado_csv.modificar_elemento(nombre, poblacion, superficie, continente)
                     case "3":
                         while True:
                             nombre = input("Ingrese el nombre del país a eliminar\n"">> ").lower().strip()
                             if input(f"Nombre ingresado: {nombre}. ¿Es correcto? [1]Si [2]No\n"">> ").lower().strip() == "2":
                                 continue
                             break
-                        modificado_csv.eliminar_elemento(nombre)
+                        Funciones.modificado_csv.eliminar_elemento(nombre)
 
                     case "4":
                         print("Saliendo al menú principal...")
@@ -160,15 +160,15 @@ def main():
                     opcion = input("Ingrese la opción a realizar:\n[1] País con mayor y menor población\n[2] Promedio de población\n[3] Promedio de superficie\n[4] Cantidad de países por continente\n[5] Salir\n"">> ")
                     match opcion:
                         case "1":
-                            mostrar_estadisticas.poblacion_mayor_y_menor()
+                            Funciones.mostrar_estadisticas.poblacion_mayor_y_menor()
                         case "2":
-                            promedio_poblacion = mostrar_estadisticas.promedio_poblacion()
+                            promedio_poblacion = Funciones.mostrar_estadisticas.promedio_poblacion()
                             print(f"Promedio de población: {promedio_poblacion}")
                         case "3":
-                            promedio_superficie = mostrar_estadisticas.promedio_superficie()
+                            promedio_superficie = Funciones.mostrar_estadisticas.promedio_superficie()
                             print(f"Promedio de superficie: {promedio_superficie}")
                         case "4":
-                            mostrar_estadisticas.paises_por_continente()
+                            Funciones.mostrar_estadisticas.paises_por_continente()
                         case "5":
                             print("Volviendo al menú de inicio")
                             break
