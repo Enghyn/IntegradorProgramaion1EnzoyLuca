@@ -2,6 +2,7 @@ import csv
 from .config import RUTA
 from .eliminar_tildes import sin_tilde
 
+
 #se le pasa por parametro el continente que se desea buscar y la función filtra entre toda la lista del csv para obtener los paises cuyos continentes son iguales al buscado
 def filtrar_por_continente(continente:str):
     continente = sin_tilde(continente)
