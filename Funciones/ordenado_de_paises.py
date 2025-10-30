@@ -1,13 +1,13 @@
-from obtener_lista_paises import obtener_paises
+from .obtener_lista_paises import obtener_paises
 
 #Función que recibe una lista de paises o un diccionario, e imprime la información de cada país
 #con formato, o del diccionario
 def mostrar_paises(paises):
     if isinstance(paises, list):
         for pais in paises:
-                print(f"País: '{pais["nombre"]}', Población: '{pais["poblacion"]}', Superficie: '{pais["superficie"]}', Continente: '{pais["continente"]}'")
+                print(f"País: '{pais['nombre']}', Población: '{pais['poblacion']}', Superficie: '{pais['superficie']}', Continente: '{pais['continente']}'")
     else:
-        print(f"País: '{paises["nombre"]}', Población: '{paises["poblacion"]}', Superficie: '{paises["superficie"]}', Continente: '{paises["continente"]}'")
+        print(f"País: '{paises['nombre']}', Población: '{paises['poblacion']}', Superficie: '{paises['superficie']}', Continente: '{paises['continente']}'")
 
 #Función que utiliza una lista de paises y los ordena por nombre de manera ascendente (A, B, C, D, etc.),
 #devuelve la lista ordenada

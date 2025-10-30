@@ -1,6 +1,6 @@
 import csv
-from config import RUTA
-from eliminar_tildes import sin_tilde
+from .config import RUTA
+from .eliminar_tildes import sin_tilde
 
 #se le pasa por parametro el continente que se desea buscar y la función filtra entre toda la lista del csv para obtener los paices cuyos continentes son iguales al buscado
 def filtrar_por_continente(continente:str):
@@ -12,7 +12,7 @@ def filtrar_por_continente(continente:str):
         for fila in lector:
             fila_continente = sin_tilde(fila["continente"].strip().lower())
             if fila_continente == continente:
-                paises.append((fila["nombre"], fila["poblacion"], fila["superficie"], fila["continente"]))
+                paises.append(fila)
 
     return paises
 

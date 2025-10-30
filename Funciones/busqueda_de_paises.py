@@ -1,6 +1,6 @@
 import csv
-from config import RUTA
-from eliminar_tildes import sin_tilde
+from .config import RUTA
+from .eliminar_tildes import sin_tilde
 
 #esta función recibe como parametro el nombre parcial o completo de un país ingresado por el usuario para ser buscado. Devuelve una lista conformada por el nombre, el continente, la población y la superficie del país buscado. 
 #en caso de no encontrar coincidencias, devuelve una lista vacía

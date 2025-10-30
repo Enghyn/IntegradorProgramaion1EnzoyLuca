@@ -4,6 +4,7 @@ import Funciones.ordenado_de_paises
 import Funciones.mostrar_estadisticas
 import Funciones.validacion_csv
 import Funciones.modificado_csv
+import Funciones.obtener_lista_paises
 
 def main():
     Funciones.validacion_csv.validar_csv()
@@ -23,7 +24,7 @@ def main():
                 resultado = Funciones.busqueda_de_paises.buscar_pais(texto)
                 if resultado:
                     for fila in resultado:
-                        print(f"- {fila['nombre']} ({fila['continente']}, {fila['poblacion']} habitantes, {fila["superficie"]} KM²)")
+                        print(f"{fila['nombre']} -- {fila['continente']} -- {fila['poblacion']} habitantes -- {fila["superficie"]} KM²)")
                 else:
                     print("No se encuentran países.")
             case "2":
@@ -34,7 +35,7 @@ def main():
                         resultado = Funciones.filtrado_de_paises.filtrar_por_continente(continente)
                         if resultado:
                             for fila in resultado:
-                                print(f"- {fila['nombre']} ({fila['continente']}, {fila['poblacion']} habitantes, {fila["superficie"]} KM²)")
+                                print(f"{fila['nombre']} -- {fila['continente']} -- {fila['poblacion']} habitantes -- {fila["superficie"]} KM²")
                         else:
                             print("No se encontraron coincidencias")
                     case "2":
@@ -112,10 +113,18 @@ def main():
                 opcion = input("Ingrese la opción a realizar:\n[1] Agregar nuevo elemento\n[2] Modificar elemento\n[3] Eliminar elementos\n[4] Salir\n>> ")
                 match opcion:
                     case "1":
+                        pais_repetido = False
                         while True:
                             nombre = input("Ingrese el nombre del país a agregar\n"">> ").lower().strip()
                             if input(f"Nombre ingresado: {nombre}. ¿Es correcto? [1]Si [2]No\n"">> ").lower().strip() == "2":
                                 continue
+                            lista_pais = Funciones.obtener_lista_paises.obtener_paises()
+                            for fila in lista_pais:
+                                if fila["nombre"].lower().strip() == nombre:
+                                    print("El país ingresado ya se encuentra en el csv")
+                                    pais_repetido = True
+                            if pais_repetido:
+                                break
                             poblacion = input("Ingrese la población del país\n"">> ").lower().strip()
                             if input(f"Población ingresada: {poblacion}. ¿Es correcto? [1]Si [2]No\n"">> ").lower().strip() == "2":
                                 continue
@@ -125,8 +134,14 @@ def main():
                             superficie = input("Ingrese la superficie del país\n"">> ").lower().strip()
                             if input(f"Superficie ingresada: {superficie}. ¿Es correcto? [1]Si [2]No\n"">> ").lower().strip() == "2":
                                 continue
+                            try:
+                                poblacion = int(poblacion)
+                                superficie = float(superficie)
+                            except ValueError:
+                                print("La población y la superficie deben ser numeros..")
+                                continue
+                            Funciones.modificado_csv.agregar_elemento(nombre, poblacion, superficie, continente)
                             break
-                        Funciones.modificado_csv.agregar_elemento(nombre, poblacion, superficie, continente)
                     case "2":
                         while True:
                             nombre = input("Ingrese el nombre del país a modificar\n"">> ").lower().strip()
@@ -141,8 +156,14 @@ def main():
                             superficie = input("Ingrese la superficie del país\n"">> ").lower().strip()
                             if input(f"Superficie ingresada: {superficie}. ¿Es correcto? [1]Si [2]No\n"">> ").lower().strip() == "2":
                                 continue
+                            try:
+                                poblacion = int(poblacion)
+                                superficie = float(superficie)
+                            except ValueError:
+                                print("La población y la superficie deben ser numeros..")
+                                continue
+                            Funciones.modificado_csv.modificar_elemento(nombre, poblacion, superficie, continente)
                             break
-                        Funciones.modificado_csv.modificar_elemento(nombre, poblacion, superficie, continente)
                     case "3":
                         while True:
                             nombre = input("Ingrese el nombre del país a eliminar\n"">> ").lower().strip()

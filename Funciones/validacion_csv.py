@@ -1,6 +1,6 @@
 import csv
 import os
-from config import RUTA
+from .config import RUTA
 
 #Encabezados del csv, especificado para reutilizarlo en las distintas funciones
 encabezados = ["nombre", "poblacion", "superficie", "continente"]

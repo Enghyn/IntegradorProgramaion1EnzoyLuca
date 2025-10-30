@@ -1,5 +1,5 @@
-from ordenado_de_paises import ordenar_por_poblacion, mostrar_paises
-from obtener_lista_paises import obtener_paises
+from .ordenado_de_paises import ordenar_por_poblacion, mostrar_paises
+from .obtener_lista_paises import obtener_paises
 
 #Función que utiliza una lista de países, e imprime el de mayor y menor población
 def poblacion_mayor_y_menor():
