@@ -120,7 +120,7 @@ def validar_csv():
         print(f"Error al procesar el archivo: {e}")
 
 def main():
-    validar_csv()
+    pass
 
 if __name__ == "__main__":
     main()

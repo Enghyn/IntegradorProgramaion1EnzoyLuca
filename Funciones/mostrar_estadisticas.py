@@ -50,7 +50,7 @@ def paises_por_continente():
     print(f"América: {cantidad_por_continente['América']}, Europa: {cantidad_por_continente['Europa']}, Asia: {cantidad_por_continente['Asia']}, Oceanía: {cantidad_por_continente['Oceanía']}, África: {cantidad_por_continente['África']}")
 
 def main():
-    paises_por_continente()
+    pass
 
 if __name__ == "__main__":
     main()

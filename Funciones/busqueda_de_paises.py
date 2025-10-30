@@ -20,15 +20,7 @@ def buscar_pais(nombre_busqueda:str):
     return resultados
 
 def main():
-    texto = input("Ingrese parte o todo el nombre del país\n"">> ").lower().strip()
-    resultados = buscar_pais(sin_tilde(texto))
-
-    if resultados:
-        print("\nCoincidencias encontradas:")
-        for fila in resultados:
-            print(f"- {fila['nombre']} ({fila['continente']}, {fila['poblacion']} habitantes, {fila["superficie"]} km2)")
-    else:
-        print("No se encontraron coincidencias.")
+    pass
 
 if __name__ == "__main__":
     main()

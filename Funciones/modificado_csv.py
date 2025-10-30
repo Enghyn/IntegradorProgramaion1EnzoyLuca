@@ -37,7 +37,8 @@ def modificar_elemento(nombre:str, poblacion:int, superficie:float, continente:s
         print("Error")
 
 
-#
+#Función que elimina el país con todos sus datos del archivo csv. Se le pasa por parametro el nombre del país, busca en el archivo csv una coincidencia exacta
+# y lo elimina del csv. Crea una lista de los archivos del csv, elimina el país que el usuario ingresó como parametro. Luego sobre escribe el csv con la lista nueva.
 def eliminar_elemento(nombre:str):
     try:
         lista_paises = obtener_paises()
@@ -56,7 +57,7 @@ def eliminar_elemento(nombre:str):
     except Exception:
         print("Error")
 
-#
+
 def main():
     pass
 

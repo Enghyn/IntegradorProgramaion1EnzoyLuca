@@ -54,7 +54,7 @@ def ordenar_por_superficie(descendente:bool):
         print("Error")
 
 def main():
-    print(ordenar_por_poblacion(False))
+    pass
 
 if __name__ == "__main__":
     main()
