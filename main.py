@@ -24,7 +24,7 @@ def main():
                 resultado = Funciones.busqueda_de_paises.buscar_pais(texto)
                 if resultado:
                     for fila in resultado:
-                        print(f"{fila['nombre']} -- {fila['continente']} -- {fila['poblacion']} habitantes -- {fila["superficie"]} KM²)")
+                        print(f"{fila['nombre']} -- {fila['continente']} -- {fila['poblacion']} habitantes -- {fila["superficie"]} KM²")
                 else:
                     print("No se encuentran países.")
             case "2":
