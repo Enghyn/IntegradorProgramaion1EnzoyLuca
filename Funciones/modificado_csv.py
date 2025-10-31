@@ -4,7 +4,7 @@ import csv
 from .eliminar_tildes import sin_tilde
 
 #Campost estandar utilizados para agregar o sobreescribir el archivo csv
-CAMPOS = ["nombre","poblacion","superficie","continente"]
+CAMPOS = ("nombre","poblacion","superficie","continente")
 
 #Funcion que recibe cuatro parámetros (nombre, poblacion, superficie y contienente),
 #y los agrega como una linea nueva en el csv
