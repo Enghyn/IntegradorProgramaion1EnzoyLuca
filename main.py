@@ -18,7 +18,7 @@ def main():
         [4] Agregar, modificar o eliminar países
         [5] Mostrar estadísticas
         [6] Salir""")
-        opcion = input(">> ")
+        opcion = input(">> ").strip()
         match opcion:
             #Opción buscar país
             case "1":

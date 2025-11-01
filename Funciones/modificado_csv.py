@@ -26,7 +26,7 @@ def modificar_elemento(nombre:str, poblacion:int, superficie:float, continente:s
         lista_paises = obtener_paises()
         pais_modificado = {"nombre":nombre.capitalize(), "poblacion":poblacion, "superficie":superficie, "continente":continente.capitalize()}
         for i in range(len(lista_paises)):
-            if lista_paises[i]["nombre"] == nombre:
+            if lista_paises[i]["nombre"].lower() == nombre.lower():
                 lista_paises[i] = pais_modificado
                 pais_encontrado = True
 
