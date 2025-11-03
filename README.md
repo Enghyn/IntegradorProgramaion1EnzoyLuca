@@ -105,7 +105,7 @@ python main.py
 - csv
 
 ## Links
-- Repositorio: https://github.com/Enghyn/IntegradorProgramaion1EnzoyLuca/tree/develop
+- Repositorio: https://github.com/Enghyn/IntegradorProgramaion1EnzoyLuca.git
 - Informe PDF: https://drive.google.com/file/d/1ovPNs6sLk9Q-ok5dScA-1Pk9UwSEobv5/view?usp=sharing
 - Video: https://youtu.be/Xp6gKROBf-I
 
