@@ -3,7 +3,7 @@ import os
 from .config import RUTA
 
 #Encabezados del csv, especificado para reutilizarlo en las distintas funciones
-encabezados = ("nombre", "poblacion", "superficie", "continente")
+encabezados = ["nombre", "poblacion", "superficie", "continente"]
 
 #Función que ecibe una string y devuelve true o false en caso de que sea solo letras o
 #tenga otros caracteres involucrados
